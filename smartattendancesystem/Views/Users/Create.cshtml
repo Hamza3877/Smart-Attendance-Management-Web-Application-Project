@@ -1,0 +1,247 @@
+﻿@model smartattendancesystem.Models.User
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link href="~/Theme/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <link href="~/Theme/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+
+</head>
+<body class="bg-gradient-primary">
+
+
+
+    @{
+        ViewData["Title"] = "Create";
+    }
+
+
+
+
+    <hr />
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div   class="col-lg-5 d-none d-lg-block bg-register-image">
+                        
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+
+                            <form class="user" asp-action="Create" method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input asp-for="FirstName" class="form-control form-control-user" id="exampleFirstName" placeholder="enter your first name here" required />
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <input asp-for="LastName" class="form-control form-control-user" id="exampleLastName" placeholder="enter your last name here" required />
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="Email" type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="enter your correct email id here" required />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input asp-for="Password" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="enter strong password here" required />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+
+                                    </div>
+
+
+
+                                    <div class="col-sm-6">
+                                        <input asp-for="Address" class="form-control form-control-user" id="exampleInputPassword" placeholder="enter your  address here" required />
+                                        <span asp-validation-for="Address" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input asp-for="PhoneNumber" type="number" class="form-control form-control-user" id="exampleInputPassword" placeholder="enter your phone number here " required />
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+                                    </div>
+
+
+                                    <div class="col-sm-6">
+                                        <input asp-for="UserName" class="form-control form-control-user" id="exampleInputPassword" placeholder="enter Username here" required />
+                                        <span asp-validation-for="UserName" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input asp-for="Role" class="form-control form-control-user" id="exampleInputPassword" placeholder="enter role here" required />
+                                        <span asp-validation-for="Role" class="text-danger"></span>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                            <label asp-for="CreatedDate" class="control-label"></label>
+                                            <input asp-for="CreatedDate" class="form-control" />
+                                            <span asp-validation-for="CreatedDate" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="CreatedBy" class="control-label"></label>
+                                            <input asp-for="CreatedBy" class="form-control" />
+                                            <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="ModifyDate" class="control-label"></label>
+                                            <input asp-for="ModifyDate" class="form-control" />
+                                            <span asp-validation-for="ModifyDate" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="ModifyBy" class="control-label"></label>
+                                            <input asp-for="ModifyBy" class="form-control" />
+                                            <span asp-validation-for="ModifyBy" class="text-danger"></span>
+                                        </div>*@
+
+
+                                    <div class="col-sm-6">
+                                        <label asp-for="Images" class="control-label"></label>
+                                        <input asp-for="Images" type="file" class="form-control form-control-user" id="exampleInputPassword" multiple required />
+                                        <span asp-validation-for="Images" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label asp-for="Status" class="control-label"></label>
+                                        <select asp-for="Status" required>
+                                            <option value="Active">Active</option>
+                                            <option value="Inactive">Inactive</option>
+                                        </select>
+                                    </div>
+
+
+
+
+                                    <input class="btn btn-primary btn-user btn-block" type="submit" value="Register Account" data-toggle="modal" data-target="#logoutModal" />
+
+                                    </hr>
+
+                            </form>
+                            </hr>
+
+
+
+
+                        </div>
+
+                        <div class="text-center">
+                            <a class="small" asp-area="" asp-controller="Users" asp-action="Login">Already have an account? Login!</a>
+
+
+                        </div>
+
+                        <div class="text-center">
+                            <a class="small" asp-area="" asp-controller="Users" asp-action="Login"> Login</a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    @* here modal *@
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-md-12">
+                        <div class="alert-success">
+                            <h5 class="modal-title" id="exampleModalLabel">@ViewBag.SucessMessage</h5>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="alert-danger">
+
+                            <h5 class="modal-title" id="exampleModalLabel">@ViewBag.WarningMessage</h5>
+
+                        </div>
+                    </div>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Register successfull now Select "Login" below if you are ready to login to access web application.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" asp-area="" asp-controller="Users" asp-action="Login">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="~/Theme/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Theme/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Theme/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Theme/js/sb-admin-2.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+</body>
+</html>
+
+
+
+

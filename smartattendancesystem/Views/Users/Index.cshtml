@@ -1,0 +1,115 @@
+﻿@model IEnumerable<smartattendancesystem.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>All User List</h2>
+
+<p>
+    <a asp-action="Create">Add New</a>
+</p>
+<table id="table" class="table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Images)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Images)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                <button>        <a asp-action="Edit" asp-route-id="@item.UserId" class="btn-circle">Edit</a> |</button>
+                <button><a asp-action="Details" asp-route-id="@item.UserId" class="btn-circle">Details</a> </button>|
+                <button><a asp-action="Delete" asp-route-id="@item.UserId" class="btn-circle">Delete</a>  </button>
+                
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                "scrollY": 200,
+                "scrollX": true
+            });
+        });
+
+
+    </script>
+}

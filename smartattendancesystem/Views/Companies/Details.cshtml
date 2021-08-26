@@ -1,0 +1,88 @@
+﻿@model smartattendancesystem.Models.Company
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+
+    <img class="img-profile float-lg-right" src="@ViewBag.Logo" alt="Image" width="100" height="100" />
+
+
+<h2>Company details</h2>
+
+
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LogoDesign)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LogoDesign)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.InTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.InTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OutTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OutTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Policies)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Policies)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WebAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WebAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CompanyId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

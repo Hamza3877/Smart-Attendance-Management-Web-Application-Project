@@ -1,0 +1,227 @@
+﻿@*@model IEnumerable<smartattendancesystem.Models.ViewModel>
+
+    @{
+        ViewData["Title"] = "Index";
+    }
+
+    <h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <h2>@ViewBag.Message</h2>
+    <form asp-action="Create" method="post">
+        <table id="table">
+            <thead>
+                <tr>
+                    <th>
+                        Employee Pics
+                    </th>
+                    <th>
+                        Department Name
+                    </th>
+                    <th>
+                        Employee Name
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Intime
+                    </th>
+                    <th>
+                        Outtime
+                    </th>
+                    <th>
+                        Attendance Status
+                    </th>
+                    <th>
+                        report
+                    </th>
+
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="@item.employee.Images" width="10%" height="10%" />
+                        </td>
+                        <td>
+                            @item.department.Name
+                        </td>
+                        <td>
+                            @item.employee.FirstName
+                        </td>
+                        <td>
+                         <input asp-for="@item.attendance.Date" />
+                        </td>
+                        <td>
+                            <input asp-for="@item.employee.InTime" />
+                        </td>
+                        <td>
+                         <input asp-for="@item.employee.OutTime" />
+                        </td>
+                        <td>
+                            <select asp-for="@item.attendance.AttendanceStatus" required>
+                                <option value="Present">Present</option>
+                                <option value="Absent">Absent</option>
+                            </select>
+                        </td>
+                        <td>
+                          <input asp-for="@item.attendance.Reports" />
+                        </td>
+
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.attendance.AttendanceId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.attendance.AttendanceId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.attendance.AttendanceId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <input type="submit" value="send" />
+    </form>
+
+
+
+    @section Scripts{
+
+        <script>
+            $(document).ready(function () {
+                $('#table').DataTable({
+                    "scrollY": 200,
+                    "scrollX": true
+                });
+            });
+
+
+        </script>
+    }*@
+
+@model smartattendancesystem.Models.Attendance
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Attendance</h4>
+
+<div class="container">
+    <div class="alert-success">
+        <h2 class="text-center">@ViewBag.SucessMessage</h2>
+
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="alert-danger">
+
+        <h2 class="text-center">@ViewBag.WarningMessage</h2>
+
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Department" class="control-label"></label>
+                @{
+
+                    SelectList SL = new SelectList(ViewBag.AllDepartment, "DepartmentId", "Name");
+                }
+
+
+                @Html.DropDownList("Department", SL, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Employee" class="control-label"></label>
+                 @{
+
+            SelectList SLL = new SelectList(ViewBag.AllEmployee, "EmployeeId", "FirstName");
+        }
+
+
+        @Html.DropDownList("Employee", SLL, new { @class = "form-control"})
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="Timing" class="control-label"></label>
+                <input asp-for="Timing" class="form-control" />
+                <span asp-validation-for="Timing" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                    <label asp-for="CreatedDate" class="control-label"></label>
+                    <input asp-for="CreatedDate" class="form-control" />
+                    <span asp-validation-for="CreatedDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreatedBy" class="control-label"></label>
+                    <input asp-for="CreatedBy" class="form-control" />
+                    <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ModifyDate" class="control-label"></label>
+                    <input asp-for="ModifyDate" class="form-control" />
+                    <span asp-validation-for="ModifyDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ModifyBy" class="control-label"></label>
+                    <input asp-for="ModifyBy" class="form-control" />
+                    <span asp-validation-for="ModifyBy" class="text-danger"></span>
+                </div>*@
+        <div class="form-group">
+            <label asp-for="Status" class="control-label"></label>
+            <select asp-for="AttendanceStatus" required>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+            <div class="form-group">
+                <label asp-for="AttendanceStatus" class="control-label"></label>
+                <select asp-for="AttendanceStatus" required>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+                <span asp-validation-for="AttendanceStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InTime" class="control-label"></label>
+                <input asp-for="InTime" class="form-control" />
+                <span asp-validation-for="InTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OutTime" class="control-label"></label>
+                <input asp-for="OutTime" class="form-control" />
+                <span asp-validation-for="OutTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reports" class="control-label"></label>
+                <input asp-for="Reports" class="form-control" />
+                <span asp-validation-for="Reports" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

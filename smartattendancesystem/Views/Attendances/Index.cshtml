@@ -1,0 +1,111 @@
+﻿@model IEnumerable<smartattendancesystem.Models.ViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@*<div>
+
+    <form asp-action="Index" method="post">
+
+
+        <input id="SearchByMember" name="SearchByMember" placeholder="SearchByMember" />
+        <input id="SearchByDate" name="SearchByDate" placeholder="SearchByDate" />
+
+        <input type="submit" value="Search" />
+    </form>
+</div>*@
+<table id="table" class="table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Employee Pics
+            </th>
+            <th>
+                Department Name
+            </th>
+            <th>
+                Employee Name
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Intime
+            </th>
+            <th>
+                Outtime
+            </th>
+            <th>
+                Attendance Status
+            </th>
+            <th>
+                report
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@item.employee.Images" width="10%" height="10%" />
+                </td>
+                <td>
+                    @item.department.Name
+                </td>
+                <td>
+                    @item.employee.FirstName
+                </td>
+                <td>
+                    @item.attendance.Date
+                </td>
+                <td>
+                    @item.attendance.InTime
+                </td>
+                <td>
+                    @item.attendance.OutTime
+                </td>
+                <td>
+                    @item.attendance.AttendanceStatus
+                </td>
+                <td>
+                    @item.attendance.Reports
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.attendance.AttendanceId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.attendance.AttendanceId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.attendance.AttendanceId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable({
+                "scrollY": 200,
+                "scrollX": true
+            });
+        });
+
+
+    </script>
+}

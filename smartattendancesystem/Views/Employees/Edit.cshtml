@@ -1,0 +1,164 @@
+﻿@model smartattendancesystem.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<img class="img-profile float-lg-right" src="@ViewBag.Images" alt="Image" width="100" height="100" />
+<h2>Edit Employee</h2>
+
+<div class="container">
+    <div class="alert-success">
+        <h2 class="text-center">@ViewBag.SucessMessage</h2>
+
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="alert-danger">
+
+        <h2 class="text-center">@ViewBag.WarningMessage</h2>
+
+    </div>
+</div>
+
+<hr />
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="EmployeeId" />
+    <div class="form-group">
+        <label asp-for="Department" class="control-label"></label>
+        @{
+
+            SelectList SSL = new SelectList(ViewBag.AllDepartment, "DepartmentId", "Name");
+        }
+        @Html.DropDownList("Department", SSL, new { @class = "form-control" })
+        <span asp-validation-for="Department" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Qualification" class="control-label"></label>
+        <input asp-for="Qualification" class="form-control" required />
+        <span asp-validation-for="Qualification" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" type="email" class="form-control" required />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Username" class="control-label"></label>
+        <input asp-for="Username" class="form-control" required />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" type="password" class="form-control" required />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="control-label"></label>
+        <input asp-for="PhoneNumber" type="number" class="form-control" required />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Address" class="control-label"></label>
+        <input asp-for="Address" class="form-control" required />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WorkExperience" class="control-label"></label>
+        <input asp-for="WorkExperience" class="form-control" required />
+        <span asp-validation-for="WorkExperience" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Images" class="control-label"></label>
+        <input asp-for="Images" type="file" class="form-control" multiple />
+        <span asp-validation-for="Images" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" required />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" required />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Designation" class="control-label"></label>
+        <input asp-for="Designation" class="form-control" required />
+        <span asp-validation-for="Designation" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HireDate" class="control-label"></label>
+        <input asp-for="HireDate" type="datetime" class="form-control" required />
+        <span asp-validation-for="HireDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="InTime" class="control-label"></label>
+        <input class="timepicker" asp-for="InTime" type="time" class="form-control" required />
+        <span asp-validation-for="InTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OutTime" class="control-label"></label>
+        <input class="timepicker" asp-for="OutTime" type="time" class="form-control" required />
+        <span asp-validation-for="OutTime" class="text-danger"></span>
+    </div>
+    @*<div class="form-group">
+            <label asp-for="CreatedDate" class="control-label"></label>
+            <input asp-for="CreatedDate" class="form-control" />
+            <span asp-validation-for="CreatedDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CreatedBy" class="control-label"></label>
+            <input asp-for="CreatedBy" class="form-control" />
+            <span asp-validation-for="CreatedBy" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ModifyDate" class="control-label"></label>
+            <input asp-for="ModifyDate" class="form-control" />
+            <span asp-validation-for="ModifyDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ModifyBy" class="control-label"></label>
+            <input asp-for="ModifyBy" class="form-control" />
+            <span asp-validation-for="ModifyBy" class="text-danger"></span>
+        </div>*@
+    <div class="form-group">
+        <label asp-for="Status" class="control-label text-white"></label>
+        <select asp-for="Status" required>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Update" class="btn btn-primary btn-lg btn-block" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+          $('input.timepicker').timepicker({
+                  timeFormat: 'h:mm p',
+    interval: 60,
+    minTime: '10',
+    maxTime: '6:00pm',
+    defaultTime: '11',
+    startTime: '10:00',
+    dynamic: false,
+    dropdown: true,
+    scrollbar: true
+            });
+        });
+
+
+    </script>
+}
